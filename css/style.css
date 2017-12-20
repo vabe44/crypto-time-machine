@@ -1,0 +1,39 @@
+.ui.multiple.selection.dropdown {
+    display: table;
+}
+
+div#cryptosegment {
+    display: flex;
+    justify-content: space-between;
+}
+
+div#cryptosegment > h1, div#cryptosegment > .dropdown {
+    margin: unset;
+}
+
+.invest.input {
+    color: white;
+    font-size: 2rem;
+}
+
+input.investedAmount {
+    color: white !important;
+}
+
+.ui.transparent[class*="left icon"].input>input {
+    padding-left: 30px!important
+}
+
+input.investedAmount {
+    width: 175px;
+}
+
+.ui.multiple.selection.dropdown {
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+button.ui.calculate.button {
+    margin-top: 50px;
+}
