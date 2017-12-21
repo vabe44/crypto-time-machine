@@ -34,8 +34,24 @@
   <script>
       $(document)
         .ready(function () {
-            $('.ui.search.dropdown')
-                .dropdown();
+
+            fetch("https://min-api.cryptocompare.com/data/all/coinlist").then(response => 
+                response.json().then(data => ({
+                    data: data,
+                    status: response.status
+                })
+            ).then(res => {
+                console.log(res.status, Object.values(res.data.Data));
+
+                let coins = Object.values(res.data.Data);
+
+                for (let index = 0; index < coins.length; index++) {
+                    const coin = coins[index];
+                    $("#coinlist").append($('<div class="item" data-value="' + coin.Name + '"><img class="ui avatar image" src="https://www.cryptocompare.com' + coin.ImageUrl + '">' + coin.FullName + '</div>'));
+                }
+
+            }));
+            $('.search.selection').dropdown();
         });
   </script>
 
@@ -61,34 +77,18 @@
             <i class="dollar icon"></i>
         </div>
         <h1 class="ui inverted header">in </h1>
-        <select class="ui search dropdown">
-            <option value="">State</option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-        </select>
+
+        <div class="ui search selection dropdown">
+            <input type="hidden" name="investedcrypto">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Crypto</div>
+            <div class="menu" id="coinlist">
+            </div>
+        </div>
+
+
+
+
         <h1 class="ui inverted header">on </h1>
         <input type="date" name="investdate">
     </div>

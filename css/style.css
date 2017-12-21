@@ -1,5 +1,9 @@
-.ui.multiple.selection.dropdown {
+.ui.search.selection.dropdown {
     display: table;
+    min-width: 300px;
+    /* border: none;
+    background: transparent;
+    color: white; */
 }
 
 div#cryptosegment {
@@ -26,12 +30,6 @@ input.investedAmount {
 
 input.investedAmount {
     width: 175px;
-}
-
-.ui.multiple.selection.dropdown {
-    border: none;
-    background: transparent;
-    color: white;
 }
 
 button.ui.calculate.button {
