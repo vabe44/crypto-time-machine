@@ -61,14 +61,20 @@
         </div>
         <h1 class="ui inverted investedin header">in </h1>
 
-        <div class="ui search selection dropdown">
+        <!-- <div class="ui search selection dropdown">
             <input type="hidden" id="investedCrypto" name="investedcrypto">
             <i class="dropdown icon"></i>
             <div class="default text">Select Crypto</div>
             <div class="menu" id="coinlist">
                 <div class="item" data-value="' + coin.Name + '"><img class="ui avatar image" src="https://www.cryptocompare.com' + coin.ImageUrl + '">' + coin.FullName + '</div>'
             </div>
-        </div>
+        </div> -->
+
+        <select class="ui basic dropdown">
+            <option value="">Gender</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
 
         <h1 class="ui inverted investedon header">on </h1>
         <input type="date" id="investDate" name="investdate">
@@ -79,22 +85,6 @@
             Calculate
         </button>
     </center>
-
-    <div class="ui selection dropdown">
-            <input type="hidden" name="gender">
-            <i class="dropdown icon"></i>
-            <div class="default text">Gender</div>
-            <div class="menu">
-              <div class="item" data-value="1">Male</div>
-              <div class="item" data-value="0">Female</div>
-            </div>
-          </div>
-
-    <select class="ui basic dropdown">
-        <option value="">Gender</option>
-        <option value="1">Male</option>
-        <option value="0">Female</option>
-    </select>
 
     <div class="result-container">
         <h1 class="ui inverted header" id="result"></h1>
