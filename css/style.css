@@ -32,10 +32,6 @@
 
 }
 
-body {
-    /* height: unset; */
-}
-
 .hero-section {
     padding-top: 0;
     padding-bottom: 0;
@@ -50,11 +46,16 @@ body {
     padding-right: 0px;
 }
 
+
+.fourteen.wide.mobile.four.wide.computer.column {
+    padding-top: 10px;
+}
+
 .result-container {
     text-align: center;
 }
 
-.ui.search.selection.dropdown {
+.ui.selection.dropdown {
     display: table;
     min-width: 300px;
     color: white;
@@ -65,7 +66,7 @@ body {
     border-color: transparent;
 }
 
-.ui.search.dropdown>.text {
+.ui.selection.dropdown>.text {
     font-size: 2rem;
     color: white !important;
 }
