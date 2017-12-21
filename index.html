@@ -34,7 +34,24 @@
   <script>
       $(document)
         .ready(function () {
+            fetch("https://min-api.cryptocompare.com/data/all/coinlist").then(response =>
+            response.json().then(data => ({
+                data: data,
+                status: response.status
+            })
+        ).then(res => {
+            console.log(res.status, Object.values(res.data.Data));
 
+            let coins = Object.values(res.data.Data);
+
+            for (let index = 0; index < coins.length; index++) {
+                const coin = coins[index];
+                $("#coinlist").append($('<div class="item" data-value="' + coin.Name + '"><img class="ui avatar image" src="https://www.cryptocompare.com' + coin.ImageUrl + '">' + coin.FullName + '</div>'));
+            }
+        }));
+        $('.search.selection').dropdown();
+        $('.ui.selection.dropdown').dropdown();
+        $('.ui.basic.dropdown').dropdown();
 
         });
   </script>
@@ -89,6 +106,12 @@
               <div class="item" data-value="0">Female</div>
             </div>
           </div>
+
+<select class="ui basic dropdown">
+  <option value="">Gender</option>
+  <option value="1">Male</option>
+  <option value="0">Female</option>
+</select>
 
     <div class="result-container">
         <h1 class="ui inverted header" id="result"></h1>
@@ -164,22 +187,7 @@
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 
     <script>
-        fetch("https://min-api.cryptocompare.com/data/all/coinlist").then(response =>
-            response.json().then(data => ({
-                data: data,
-                status: response.status
-            })
-        ).then(res => {
-            console.log(res.status, Object.values(res.data.Data));
 
-            let coins = Object.values(res.data.Data);
-
-            for (let index = 0; index < coins.length; index++) {
-                const coin = coins[index];
-                $("#coinlist").append($('<div class="item" data-value="' + coin.Name + '"><img class="ui avatar image" src="https://www.cryptocompare.com' + coin.ImageUrl + '">' + coin.FullName + '</div>'));
-            }
-        }));
-        $('.search.selection').dropdown();
     </script>
 
 </body>
