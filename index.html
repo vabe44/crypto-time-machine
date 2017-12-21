@@ -28,6 +28,7 @@
   </script>
   <script src="https://use.typekit.net/cnh3mnl.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script href="https://cdn.jsdelivr.net/npm/promise-polyfill@6/promise.min.js"></script>
   <script src="js/fetch.js"></script>
   <script src="js/modernizr.js" type="text/javascript"></script>
   <script src="js/jquery.min.js"></script>
@@ -35,7 +36,12 @@
   <script>
       $(document)
         .ready(function () {
+            import Promise from 'promise-polyfill';
 
+            // To add to window
+            if (!window.Promise) {
+                window.Promise = Promise;
+            }
 
         });
   </script>
