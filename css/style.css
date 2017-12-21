@@ -14,8 +14,8 @@
     }
 
     .ui.search.selection.dropdown, input#investDate {
-        width: 78% !important;
-        min-width: unset !important;
+        min-width: 78% !important;
+        /* min-width: unset !important; */
     }
 
     button.ui.calculate.button {
