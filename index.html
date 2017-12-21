@@ -80,7 +80,7 @@
             <div class="fourteen wide mobile four wide computer column">
                 <select class="ui basic dropdown" id="investedCrypto" placeholder="Select crypto">
                     <option value="BTC">Bitcoin</option>
-                    <option value="XMR">Bitcoin Cash</option>
+                    <option value="BCH">Bitcoin Cash</option>
                     <option value="ETH">Ethereum</option>
                     <option value="LTC">Litecoin</option>
                     <option value="XMR">Monero</option>
@@ -135,7 +135,7 @@
                 })
                 ).then(res => {
                 // console.log(amount * res.data["USD"].BTC);
-                return amount * res.data["USD"].BTC;
+                return amount * res.data.USD[crypto];
             }))
             .then(amount => {
                 // console.log('Investment could buy ' + amount + ' ' + crypto);
@@ -159,7 +159,7 @@
             // console.log(i.amount, i.crypto, toTimestamp(i.on));
             getCryptoAmountFromUsdAt(i.amount, i.crypto, toTimestamp(i.on))
             .then(amount => {
-                getCryptoUsdValue("BTC").then(currentValue => {
+                getCryptoUsdValue(i.crypto).then(currentValue => {
                     console.log(`You would now have ${amount} ${i.crypto} which are worth $${currentValue * amount} today.`)
                     console.log(`This is a profit of $${ (currentValue * amount) - i.amount }`);
 
