@@ -35,23 +35,7 @@
       $(document)
         .ready(function () {
 
-            fetch("https://min-api.cryptocompare.com/data/all/coinlist").then(response => 
-                response.json().then(data => ({
-                    data: data,
-                    status: response.status
-                })
-            ).then(res => {
-                console.log(res.status, Object.values(res.data.Data));
 
-                let coins = Object.values(res.data.Data);
-
-                for (let index = 0; index < coins.length; index++) {
-                    const coin = coins[index];
-                    $("#coinlist").append($('<div class="item" data-value="' + coin.Name + '"><img class="ui avatar image" src="https://www.cryptocompare.com' + coin.ImageUrl + '">' + coin.FullName + '</div>'));
-                }
-
-            }));
-            $('.search.selection').dropdown();
         });
   </script>
 
@@ -71,38 +55,121 @@
 
     <div class="container w-container" id="cryptosegment">
         <h1 class="ui inverted header">If I invested </h1>
-        <!-- <h1 class="ui inverted header">$_____ </h1> -->
         <div class="ui transparent left icon invest input">
-            <input type="number" class="investedAmount" placeholder="_________________________________________" vk_17186="subscribed">
+            <input type="number" id="investedAmount" class="investedAmount" placeholder="_________________________________________" vk_17186="subscribed">
             <i class="dollar icon"></i>
         </div>
         <h1 class="ui inverted header">in </h1>
 
         <div class="ui search selection dropdown">
-            <input type="hidden" name="investedcrypto">
+            <input type="hidden" id="investedCrypto" name="investedcrypto">
             <i class="dropdown icon"></i>
             <div class="default text">Select Crypto</div>
             <div class="menu" id="coinlist">
             </div>
         </div>
 
-
-
-
         <h1 class="ui inverted header">on </h1>
-        <input type="date" name="investdate">
+        <input type="date" id="investDate" name="investdate">
     </div>
 
     <center>
-        <button class="ui calculate button">
+        <button class="ui calculate button" onclick="calculate()">
             Calculate
         </button>
     </center>
 
-  </div>
+    <div class="result-container">
+        <h1 class="ui inverted header" id="result"></h1>
+        <h1 class="ui inverted header" id="profit"></h1>
+    </div>
+
+    </div>
+
+    <script>
+
+        function toTimestamp(strDate){
+            var date = Date.parse(strDate);
+            return date/1000;
+        }
+
+        function getInvestedValues() {
+            return {
+                amount: document.getElementById('investedAmount').value,
+                crypto: document.getElementById('investedCrypto').value,
+                on: document.getElementById('investDate').value
+            };
+        }
+
+        function getCryptoAmountFromUsdAt(amount, crypto, timestamp) {
+            const url = 'https://min-api.cryptocompare.com/data/pricehistorical?fsym=USD&tsyms=' + crypto + '&ts=' + timestamp;
+            // const url = 'https://min-api.cryptocompare.com/data/pricehistorical?fsym=USD&tsyms=BTC&ts=1512432000';
+            return fetch(url)
+            .then(response =>
+                response.json().then(data => ({
+                    data: data,
+                    status: response.status
+                })
+                ).then(res => {
+                // console.log(amount * res.data["USD"].BTC);
+                return amount * res.data["USD"].BTC;
+            }))
+            .then(amount => {
+                // console.log('Investment could buy ' + amount + ' ' + crypto);
+                return amount;
+            });
+        }
+
+        function getCryptoUsdValue(crypto) {
+            const url = 'https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + crypto + '&tsyms=USD';
+            return fetch(url)
+            .then(response => {
+                return response.json()
+            }).then(res => {
+                // console.log('Crypto current price in USD: ' + res[crypto].USD);
+                return res[crypto].USD;
+            })
+        }
+
+        function calculate() {
+            const i = getInvestedValues();
+            // console.log(i.amount, i.crypto, toTimestamp(i.on));
+            getCryptoAmountFromUsdAt(i.amount, i.crypto, toTimestamp(i.on))
+            .then(amount => {
+                getCryptoUsdValue("BTC").then(currentValue => {
+                    console.log(`You would now have ${amount} ${i.crypto} which are worth $${currentValue * amount} today.`)
+                    console.log(`This is a profit of $${ (currentValue * amount) - i.amount }`);
+
+                    document.getElementById('result').innerText = 'You would now have ' + amount + ' ' + i.crypto + ' which are worth $' + currentValue * amount + ' today.';
+                    document.getElementById('profit').innerText = 'This is a profit of $' + ((currentValue * amount) - i.amount);
+                })
+            })
+        }
+
+    </script>
 
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script> -->
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+
+    <script>
+        fetch("https://min-api.cryptocompare.com/data/all/coinlist").then(response =>
+            response.json().then(data => ({
+                data: data,
+                status: response.status
+            })
+        ).then(res => {
+            console.log(res.status, Object.values(res.data.Data));
+
+            let coins = Object.values(res.data.Data);
+
+            for (let index = 0; index < coins.length; index++) {
+                const coin = coins[index];
+                $("#coinlist").append($('<div class="item" data-value="' + coin.Name + '"><img class="ui avatar image" src="https://www.cryptocompare.com' + coin.ImageUrl + '">' + coin.FullName + '</div>'));
+            }
+        }));
+        $('.search.selection').dropdown();
+    </script>
+
 </body>
 </html>

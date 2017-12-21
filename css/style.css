@@ -1,3 +1,12 @@
+.hero-section {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.result-container {
+    text-align: center;
+}
+
 .ui.search.selection.dropdown {
     display: table;
     min-width: 300px;
@@ -29,9 +38,10 @@ input.investedAmount {
 }
 
 input.investedAmount {
-    width: 175px;
+    width: 140px;
 }
 
 button.ui.calculate.button {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
