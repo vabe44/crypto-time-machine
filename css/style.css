@@ -5,24 +5,24 @@
     }
 
     .invest.input, h1.ui.inverted.ifinvested.header {
-        width: 49%;
+        /* width: 49%; */
     }
 
     h1.ui.inverted.investedin.header, h1.ui.inverted.investedon.header {
-        width: 10%;
+        /* width: 10%; */
         /* padding-left: 5px; */
     }
 
     .ui.dropdown {
         min-width: unset !important;
         min-width: 90% !important;
-        margin-left: -10%;
-        padding-left: 10%;
+        /* margin-left: -10%; */
+        /* padding-left: 10%; */
     }
 
     input#investDate {
-        min-width: unset !important;
-        min-width: 90% !important;
+        /* min-width: unset !important; */
+        /* min-width: 90% !important; */
     }
 
     button.ui.calculate.button {
