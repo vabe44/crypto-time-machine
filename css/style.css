@@ -1,6 +1,28 @@
+@media (max-width: 991px) {
+
+    div#cryptosegment {
+        flex-wrap: wrap;
+    }
+
+    .invest.input, h1.ui.inverted.ifinvested.header {
+        width: 50%;
+    }
+
+    button.ui.calculate.button {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+}
+
+body {
+    /* height: unset; */
+}
+
 .hero-section {
     padding-top: 0;
     padding-bottom: 0;
+    height: 100%;
 }
 
 .text-block {
