@@ -3,6 +3,10 @@
     padding-bottom: 0;
 }
 
+.text-block {
+    padding-right: 0px;
+}
+
 .result-container {
     text-align: center;
 }
