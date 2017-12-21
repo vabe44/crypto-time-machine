@@ -10,12 +10,17 @@
 
     h1.ui.inverted.investedin.header, h1.ui.inverted.investedon.header {
         width: 10%;
-        padding-left: 5px;
+        /* padding-left: 5px; */
     }
 
-    .ui.search.selection.dropdown, input#investDate {
+    .ui.search.selection.dropdown {
         min-width: unset !important;
-        min-width: 88% !important;
+        min-width: 90% !important;
+    }
+
+    input#investDate {
+        min-width: unset !important;
+        min-width: 90% !important;
     }
 
     button.ui.calculate.button {
