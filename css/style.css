@@ -13,7 +13,7 @@
         /* padding-left: 5px; */
     }
 
-    .ui.search.selection.dropdown {
+    .ui.dropdown {
         min-width: unset !important;
         min-width: 90% !important;
     }
