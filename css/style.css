@@ -16,6 +16,8 @@
     .ui.dropdown {
         min-width: unset !important;
         min-width: 90% !important;
+        margin-left: -10%;
+        padding-left: 10%;
     }
 
     input#investDate {
@@ -86,7 +88,7 @@ div#cryptosegment {
 }
 
 div#cryptosegment > h1, div#cryptosegment > .dropdown {
-    margin: unset;
+    margin: auto;
 }
 
 .invest.input {
