@@ -9,13 +9,13 @@
     }
 
     h1.ui.inverted.investedin.header, h1.ui.inverted.investedon.header {
-        width: 22%;
+        width: 10%;
         padding-left: 5px;
     }
 
     .ui.search.selection.dropdown, input#investDate {
         min-width: unset !important;
-        min-width: 78% !important;
+        min-width: 88% !important;
     }
 
     button.ui.calculate.button {
@@ -35,6 +35,10 @@ body {
     height: 100%;
 }
 
+.w-container {
+    max-width: unset;
+}
+
 .text-block {
     padding-right: 0px;
 }
@@ -46,9 +50,29 @@ body {
 .ui.search.selection.dropdown {
     display: table;
     min-width: 300px;
-    /* border: none;
-    background: transparent;
-    color: white; */
+    color: white;
+    background-color: transparent;
+}
+
+.ui.selection.dropdown:hover {
+    border-color: transparent;
+}
+
+.ui.search.dropdown>.text {
+    font-size: 2rem;
+    color: white !important;
+}
+
+img.ui.avatar.image {
+    max-height: 1.5em !important;
+}
+
+input#investDate {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    text-align: right;
 }
 
 div#cryptosegment {
