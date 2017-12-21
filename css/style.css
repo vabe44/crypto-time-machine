@@ -5,7 +5,16 @@
     }
 
     .invest.input, h1.ui.inverted.ifinvested.header {
-        width: 50%;
+        width: 40%;
+    }
+
+    h1.ui.inverted.investedin.header, h1.ui.inverted.investedon.header {
+        width: 22%;
+    }
+
+    .ui.search.selection.dropdown, input#investDate {
+        width: 70% !important;
+        min-width: unset !important;
     }
 
     button.ui.calculate.button {
