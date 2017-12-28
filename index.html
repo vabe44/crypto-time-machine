@@ -40,7 +40,7 @@
             function drawChart1(crypto) {
                 crypto = crypto || "BTC";
                 $.ajax({
-                    url: "http://coincap.io/history/" + crypto,
+                    url: "https://coincap.io/history/" + crypto,
                     dataType: "json",
                     success: function (json) {
 
