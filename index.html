@@ -336,7 +336,10 @@
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                         <div class="panel panel-info ">
                             <div class="panel-heading col-right">
-                                <h3 class="panel-title">Purchase Price</h3>
+                                <h3 class="panel-title">
+                                    Purchase Price
+                                    <i id="purchasePriceTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                </h3>
                             </div>
                             <div class="panel-body col-right">
                                 <h3 id="purchasePrice">
@@ -349,7 +352,10 @@
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
                             <div class="panel-heading col-center">
-                                <h3 class="panel-title ">Amount</h3>
+                                <h3 class="panel-title ">
+                                    Amount
+                                    <i id="amountTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                </h3>
                             </div>
                             <div class="panel-body col-center">
                                 <h3 id="amountText">3.79 BTC</h3>
@@ -359,7 +365,10 @@
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 col-left">
                         <div class="panel panel-info ">
                             <div class="panel-heading">
-                                <h3 class="panel-title ">Price Now</h3>
+                                <h3 class="panel-title ">
+                                    Price Now
+                                    <i id="priceNowTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                </h3>
                             </div>
                             <div class="panel-body ">
                                 <h3 id="priceNow">$15<span class="comma">,</span>477.1</h3>
@@ -370,7 +379,10 @@
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
                             <div class="panel-heading col-right">
-                                <h3 class="panel-title">Total Value Now</h3>
+                                <h3 class="panel-title">
+                                    Total Value Now
+                                    <i id="totalValueNowTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                </h3>
                             </div>
                             <div class="panel-body col-right">
                                 <h3 id="totalValueNow">$58<span class="comma ">,</span>620.1</h3>
@@ -380,7 +392,10 @@
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
                             <div class="panel-heading col-center">
-                                <h3 class="panel-title ">Profit</h3>
+                                <h3 class="panel-title ">
+                                    Profit
+                                    <i id="profitTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                </h3>
                             </div>
                             <div class="panel-body col-center">
                                 <h3 id="profit" class="profit">+$48<span class="comma ">,</span>920.1</h3>
@@ -390,7 +405,10 @@
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Change</h3>
+                                <h3 class="panel-title">
+                                    Change
+                                    <i id="changeTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                </h3>
                             </div>
                             <div class="panel-body ">
                                 <h3 id="change" class="profit ">+504.3%</h3>
@@ -563,12 +581,18 @@
 
                 document.getElementById("purchasePrice").innerHTML = i.fiatCurrency + purchasePrice.toLocaleString();
                 document.getElementById("purchasePriceText").innerText = 'per ' + i.crypto;
+                document.getElementById("purchasePriceTooltip").setAttribute('data-original-title', "The price of one " + i.cryptoName + ' on ' + i.on.toLocaleString());
                 document.getElementById("amountText").innerText = amount.toLocaleString() + ' ' + i.crypto;
+                document.getElementById("amountTooltip").setAttribute('data-original-title', "The amount of " + i.cryptoName + ' you could have bought with ' + i.fiatCurrency+i.amount + ' ' + i.on.toLocaleString());
                 document.getElementById("priceNow").innerHTML = i.fiatCurrency + priceNow.toLocaleString();
                 document.getElementById("priceNowText").innerText = 'per ' + i.crypto;
+                document.getElementById("priceNowTooltip").setAttribute('data-original-title', "The current price of one " + i.cryptoName);
                 document.getElementById("totalValueNow").innerHTML = i.fiatCurrency + totalValueNow.toLocaleString();
+                document.getElementById("totalValueNowTooltip").setAttribute('data-original-title', "The total value of " + amount + " " + i.cryptoName + " today");
                 document.getElementById("profit").innerHTML = profit > 0 ? i.fiatCurrency + profit.toLocaleString() : '-' + i.fiatCurrency + (profit * -1).toLocaleString();
+                document.getElementById("profitTooltip").setAttribute('data-original-title', "The profit of a " + i.fiatCurrency+i.amount + ' investment in ' + i.cryptoName + ' on ' + i.on.toLocaleString());
                 document.getElementById("change").innerHTML = profit > 0 ? change.toLocaleString() + '%' : '-' + (100 - change).toLocaleString() + '%';
+                document.getElementById("changeTooltip").setAttribute('data-original-title', "The change of a " + i.fiatCurrency+i.amount + ' investment in ' + i.cryptoName + ' on ' + i.on.toLocaleString());
                 // document.getElementById("annualReturn").innerHTML = annualReturn.toLocaleString() + '%';
                 document.getElementById("notLate").innerText = i.cryptoName;
 
