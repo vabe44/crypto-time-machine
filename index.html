@@ -262,7 +262,7 @@
                             </div>
                             <div class="col-xs-8 question-col">
                                 <div class="input-group input-append date " id="datePicker">
-                                    <input class="form-control input-lg " id="buy_date" name="date" type="text " value="Pick a date..."/>
+                                    <input class="form-control input-lg " id="buy_date" name="date" type="text " value="" placeholder="Pick a date..." />
                                     <span class="input-group-addon add-on "><i class="fa fa-th fa-calendar"></i></span>
                                 </div>
                             </div>
@@ -500,12 +500,6 @@
 
             function calculate() {
 
-                var button = document.getElementById('submit');
-                document.getElementById('buttonText').innerText = 'Loading...';
-                var buttonLoading = document.getElementById('buttonLoading');
-                buttonLoading.style.display = 'inline-block';
-                button.classList.add("disabled");
-
                 const i = getInvestedValues();
 
                 if(i.amount > 0) {
@@ -521,6 +515,12 @@
                     alert("Please pick a valid date.");
                     return;
                 }
+
+                var button = document.getElementById('submit');
+                document.getElementById('buttonText').innerText = 'Loading...';
+                var buttonLoading = document.getElementById('buttonLoading');
+                buttonLoading.style.display = 'inline-block';
+                button.classList.add("disabled");
 
                 // console.log(i.amount, i.crypto, toTimestamp(i.on));
                 var purchasePrice = getFiatAmountFromCryptoAt(i.fiatToken, i.crypto, toTimestamp(i.on));
