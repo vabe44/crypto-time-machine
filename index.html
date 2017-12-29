@@ -85,9 +85,24 @@
             }
 
             .panel.panel-info {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                border: none;
+                box-shadow: none;
+            }
+
+            .panel-heading, .panel-body {
                 width: 50%;
-                display: table;
-                align-self: center;
+            }
+
+            .col-right {
+                margin-left: 50%;
+            }
+
+
+            .col-center {
+                margin-left: 25%;
             }
 
         </style>
@@ -277,10 +292,12 @@
                         </div>
                         <div class="row ">
                             <div class="col-lg-12 question-col">
+                                <!-- <a href="#resultsContainer"> -->
                                 <button class="btn btn-primary btn-lg" id="submit" onclick="calculate()" type="button">
                                     <i id="buttonLoading" style="display:none;" class="fa fa-spinner fa-spin"></i>
                                     <span id="buttonText">Tell me what would have been!</span>
                                 </button>
+                                <!-- </a> -->
                             </div>
                         </div>
                     </div>
@@ -290,6 +307,7 @@
         </div>
 
         <div id="resultsSection" style="display:none;" class="container-fluidindex-top container-answer no-padding">
+            <a name="resultsContainer"></a> 
             <div class="container ">
                 <div class="row no-padding">
                     <div class="col-md-12 text-center">
@@ -305,12 +323,12 @@
                     </div>
                 </div>
                 <div class="row equal padding ">
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                         <div class="panel panel-info ">
-                            <div class="panel-heading">
-                                <h3 class="panel-title ">Purchase Price</h3>
+                            <div class="panel-heading col-right">
+                                <h3 class="panel-title">Purchase Price</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body col-right">
                                 <h3 id="purchasePrice">
                                     $2<span class="comma ">,</span>561.0
                                 </h3>
@@ -320,15 +338,15 @@
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
-                            <div class="panel-heading">
+                            <div class="panel-heading col-center">
                                 <h3 class="panel-title ">Amount</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body col-center">
                                 <h3 id="amountText">3.79 BTC</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 col-left">
                         <div class="panel panel-info ">
                             <div class="panel-heading">
                                 <h3 class="panel-title ">Price Now</h3>
@@ -341,20 +359,20 @@
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
-                            <div class="panel-heading ">
+                            <div class="panel-heading col-right">
                                 <h3 class="panel-title">Total Value Now</h3>
                             </div>
-                            <div class="panel-body ">
+                            <div class="panel-body col-right">
                                 <h3 id="totalValueNow">$58<span class="comma ">,</span>620.1</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
                         <div class="panel panel-info ">
-                            <div class="panel-heading">
+                            <div class="panel-heading col-center">
                                 <h3 class="panel-title ">Profit</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body col-center">
                                 <h3 id="profit" class="profit">+$48<span class="comma ">,</span>920.1</h3>
                             </div>
                         </div>
@@ -580,6 +598,7 @@
                 document.getElementById("resultsSection").style.display = 'inherit';
 
                 drawChart1(i.crypto);
+                document.getElementById("resultsSection").scrollIntoView()
 
             }
         </script>
