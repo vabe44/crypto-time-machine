@@ -72,6 +72,24 @@
                 background-color: hsl(289, 90%, 50%);
             }
 
+            .panel.panel-info {
+                /* width: 50%; */
+                display: table;
+            }
+
+            .col-md-4.col-lg-4.col-sm-6.col-xs-12 {
+                /* width: auto; */
+                display: flex;
+                /* float: none; */
+                flex-direction: column;
+            }
+
+            .panel.panel-info {
+                width: 50%;
+                display: table;
+                align-self: center;
+            }
+
         </style>
     </head>
 
@@ -353,14 +371,14 @@
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 visible-lg visible-md "></div>
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
-                        <div class="panel panel-info ">
+                        <!-- <div class="panel panel-info ">
                             <div class="panel-heading ">
                                 <h3 class="panel-title">Annual Return</h3>
                             </div>
                             <div class="panel-body ">
                                 <h3 id="annualReturn" class="profit">+4<span class="comma ">,</span>551.9%</h3>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 visible-lg visible-md "></div>
                 </div>
@@ -489,7 +507,20 @@
                 button.classList.add("disabled");
 
                 const i = getInvestedValues();
-                drawChart1(i.crypto);
+
+                if(i.amount > 0) {
+                    console.log("OK");
+                } else {
+                    alert("Please enter a valid amount.");
+                    return;
+                }
+
+                if(i.on) {
+                    console.log("OK");
+                } else {
+                    alert("Please pick a valid date.");
+                    return;
+                }
 
                 // console.log(i.amount, i.crypto, toTimestamp(i.on));
                 var purchasePrice = getFiatAmountFromCryptoAt(i.fiatToken, i.crypto, toTimestamp(i.on));
@@ -510,7 +541,7 @@
                 document.getElementById("totalValueNow").innerHTML = i.fiatCurrency + totalValueNow.toLocaleString();
                 document.getElementById("profit").innerHTML = profit > 0 ? i.fiatCurrency + profit.toLocaleString() : '-' + i.fiatCurrency + (profit * -1).toLocaleString();
                 document.getElementById("change").innerHTML = profit > 0 ? change.toLocaleString() + '%' : '-' + (100 - change).toLocaleString() + '%';
-                document.getElementById("annualReturn").innerHTML = annualReturn.toLocaleString() + '%';
+                // document.getElementById("annualReturn").innerHTML = annualReturn.toLocaleString() + '%';
                 document.getElementById("notLate").innerText = i.cryptoName;
 
                 document.getElementById("resultCryptoAmountText").innerText = amount.toLocaleString() + ' ' + i.crypto;
@@ -528,8 +559,8 @@
                     document.getElementById("profit").classList.add("loss");
                     document.getElementById("change").classList.remove("profit");
                     document.getElementById("change").classList.add("loss");
-                    document.getElementById("annualReturn").classList.remove("profit");
-                    document.getElementById("annualReturn").classList.add("loss");
+                    // document.getElementById("annualReturn").classList.remove("profit");
+                    // document.getElementById("annualReturn").classList.add("loss");
                 } else {
                     document.getElementById("resultProfitFiatText").classList.add("profit");
                     document.getElementById("resultProfitFiatText").classList.remove("loss");
@@ -539,14 +570,16 @@
                     document.getElementById("profit").classList.remove("loss");
                     document.getElementById("change").classList.add("profit");
                     document.getElementById("change").classList.remove("loss");
-                    document.getElementById("annualReturn").classList.add("profit");
-                    document.getElementById("annualReturn").classList.remove("loss");
+                    // document.getElementById("annualReturn").classList.add("profit");
+                    // document.getElementById("annualReturn").classList.remove("loss");
                 }
 
                 buttonLoading.style.display = 'none';
                 button.classList.remove("disabled");
                 document.getElementById('buttonText').innerText = 'Tell me what would have been!';
                 document.getElementById("resultsSection").style.display = 'inherit';
+
+                drawChart1(i.crypto);
 
             }
         </script>
