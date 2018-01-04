@@ -72,7 +72,10 @@
                 background-color: hsl(289, 90%, 50%);
             }
 
-
+            a.sidebar {
+                font-weight: bold;
+                color: hsl(256, 70%, 68%);
+            }
 
             @media (min-width: 992px) {
                 .col-sm-6 {
@@ -107,9 +110,16 @@
                     margin-left: 50%;
                 }
 
-
                 .col-center {
                     margin-left: 25%;
+                }
+
+            }
+
+            @media (max-width: 992px) {
+
+                .hidden-sm {
+                    display: none !important;
                 }
 
             }
@@ -270,8 +280,8 @@
                                         <option data-subtext="LTC" data-tokens="LTC Litecoin">Litecoin</option>
                                         <option data-subtext="DASH" data-tokens="Dash">Dash</option>
                                         <option data-subtext="NEM" data-tokens="NEM">NEM</option>
-                                        <option data-subtext="MIOTA" data-tokens="IOTA MIOTA">IOTA</option>
-                                        <option id="monero" data-subtext="XMR" data-tokens="XMR Monero">Monero</option>
+                                        <option data-subtext="IOT" data-tokens="IOTA MIOTA">IOTA</option>
+                                        <option data-subtext="XMR" data-tokens="XMR Monero">Monero</option>
                                         <option data-subtext="NEO" data-tokens="NEO Antshares">NEO</option>
                                         <option data-subtext="ETC" data-tokens="ETC Ethereum Classic">Ethereum Classic</option>
                                         <option data-subtext="DOGE" data-tokens="DOGE Dogecoin">Dogecoin</option>
@@ -318,139 +328,232 @@
 
         <div id="resultsSection" style="display:none;" class="container-fluidindex-top container-answer no-padding">
             <a name="resultsContainer"></a>
-            <div class="container ">
-                <div class="row no-padding">
-                    <div class="col-md-12 text-center">
-                        <h2 id="resultText" class="result">
-                            You would now have <span id="resultCryptoAmountText" class="stand-out">3.79 BTC</span> which are worth <span id="resultFiatAmountText" class="stand-out">$58,620.1</span> today.<br/>
-                            This is a profit of <span id="resultProfitFiatText" class="profit">48,920.1</span> (<span id="resultProfitChangePercentText" class="profit">504.3%</span>).
-                        </h2>
+            <div class="row no-padding">
+                <div class="col-md-2 hidden-sm">
+                    <div class="col-md-12">
+                        <a href="#" data-amount="2400" data-cryptoName="ETH Ethereum" data-crypto="ETH" data-displayName="Ethereum" data-date="07/03/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/ethereum-crypto-time-machine.jpg">
+                            What if I had invested $2400
+                            <br>in Ethereum on 07/03/2016</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="5100" data-cryptoName="ETC Ethereum Classic" data-crypto="ETC" data-displayName="Ethereum Classic" data-date="04/05/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/ethereum-classic-crypto-time-machine.jpg">
+                            What if I had invested $5100
+                            <br>in Ethereum Classic on 04/05/2017</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="1700" data-cryptoName="BCH Bitcoin Cash" data-crypto="BCH" data-displayName="Bitcoin Cash" data-date="12/24/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/bitcoin-cash-crypto-time-machine.jpg">
+                            What if I had invested $1700
+                            <br>in Bitcoin Cash on 12/24/2017</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="500" data-cryptoName="XRP Ripple" data-crypto="XRP" data-displayName="Ripple" data-date="07/12/2015" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/ripple-crypto-time-machine.jpg">
+                            What if I had invested $500
+                            <br>in Ripple on 07/12/2015</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="7900" data-cryptoName="LTC Litecoin" data-crypto="LTC" data-displayName="Litecoin" data-date="08/23/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/litecoin-crypto-time-machine.jpg">
+                            What if I had invested $7900
+                            <br>in Litecoin on 08/23/2015</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="3600" data-cryptoName="DASH Dash" data-crypto="DASH" data-displayName="Dash" data-date="07/24/2014" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/dash-crypto-time-machine.jpg">
+                            What if I had invested $3600
+                            <br>in Dash on 07/24/2014</a>
+                        <br>
                     </div>
                 </div>
-                <div class="row padding padding-bottom ">
-                    <div class="col-md-12 text-center ">
-                        <div id="curve_chart" style="width:100%;height:350px; "></div>
+
+                <div class="col-md-8 col-sm-12">
+                        <div class="row no-padding">
+                            <div class="col-md-12 text-center">
+                                <h2 id="resultText" class="result">
+                                    You would now have <span id="resultCryptoAmountText" class="stand-out">3.79 BTC</span> which are worth <span id="resultFiatAmountText" class="stand-out">$58,620.1</span> today.<br/>
+                                    This is a profit of <span id="resultProfitFiatText" class="profit">48,920.1</span> (<span id="resultProfitChangePercentText" class="profit">504.3%</span>).
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row padding padding-bottom ">
+                            <div class="col-md-12 text-center ">
+                                <div id="curve_chart" style="width:100%;height:350px; "></div>
+                            </div>
+                        </div>
+                        <div class="row equal padding ">
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading col-right">
+                                        <h3 class="panel-title">
+                                            Purchase Price
+                                            <i id="purchasePriceTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body col-right">
+                                        <h3 id="purchasePrice">
+                                            $2<span class="comma ">,</span>561.0
+                                        </h3>
+                                        <span id="purchasePriceText" class="label label-default">per BTC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading col-center">
+                                        <h3 class="panel-title ">
+                                            Amount
+                                            <i id="amountTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body col-center">
+                                        <h3 id="amountText">3.79 BTC</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 col-left">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title ">
+                                            Price Now
+                                            <i id="priceNowTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body ">
+                                        <h3 id="priceNow">$15<span class="comma">,</span>477.1</h3>
+                                        <span id="priceNowText" class="label label-default ">per BTC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading col-right">
+                                        <h3 class="panel-title">
+                                            Total Value Now
+                                            <i id="totalValueNowTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body col-right">
+                                        <h3 id="totalValueNow">$58<span class="comma ">,</span>620.1</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading col-center">
+                                        <h3 class="panel-title ">
+                                            Profit
+                                            <i id="profitTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body col-center">
+                                        <h3 id="profit" class="profit">+$48<span class="comma ">,</span>920.1</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            Change
+                                            <i id="changeTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body ">
+                                        <h3 id="change" class="profit ">+504.3%</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 visible-lg visible-md "></div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
+                                <!-- <div class="panel panel-info ">
+                                    <div class="panel-heading ">
+                                        <h3 class="panel-title">Annual Return</h3>
+                                    </div>
+                                    <div class="panel-body ">
+                                        <h3 id="annualReturn" class="profit">+4<span class="comma ">,</span>551.9%</h3>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 visible-lg visible-md "></div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 text-center">
+                                <h2 class="result ">It's never too late to get involved in
+                                    <span class="stand-out" id="notLate">Bitcoin</span>.
+                                    <br/>Start your cryptocurrency journey now on</h2>
+                            </div>
+                            <div class="col-md-6 text-center ">
+                                <a href="https://www.binance.com/ " target="_blank ">
+                                    <img alt="Binance Exchange " class="exchange" src="images/binance.png"
+                                    />
+                                </a>
+                            </div>
+                            <div class="col-md-6 text-center ">
+                                <a href="https://bittrex.com/ " target="_blank ">
+                                    <img alt="Bittrex Exchange " class="exchange" src="images/bittrex.jpg"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="col-md-2 hidden-sm">
+                    <div class="col-md-12">
+                        <a href="#" data-amount="7600" data-cryptoName="NEM NEM" data-crypto="NEM" data-displayName="NEM" data-date="04/06/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/nem-crypto-time-machine.jpg">
+                            What if I had invested $7600
+                            <br>in NEM on 04/06/2017</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="7500" data-cryptoName="IOTA MIOTA" data-crypto="IOTA" data-displayName="IOTA" data-date="09/22/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/iota-crypto-time-machine.jpg">
+                            What if I had invested $7500
+                            <br>in IOTA on 09/22/2017</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="2700" data-cryptoName="XMR Monero" data-crypto="XMR" data-displayName="Monero" data-date="10/23/2014" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/monero-crypto-time-machine.jpg">
+                            What if I had invested $2700
+                            <br>in Monero on 10/28/2014</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="9400" data-cryptoName="NEO Antshares" data-crypto="NEO" data-displayName="NEO" data-date="01/15/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/neo-crypto-time-machine.jpg">
+                            What if I had invested $9400
+                            <br>in NEO on 01/15/2017</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="4300" data-cryptoName="DOGE Dogecoin" data-crypto="DOGE" data-displayName="Dogecoin" data-date="11/28/2017" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/dogecoin-crypto-time-machine.jpg">
+                            What if I had invested $4300
+                            <br>in Dogecoin on 11/28/2017</a>
+                        <br>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#" data-amount="600" data-cryptoName="BTC Bitcoin" data-crypto="BTC" data-displayName="Bitcoin" data-date="04/06/2014" onclick="checkCoin(this)" class="sidebar">
+                            <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/bitcoin-crypto-time-machine.jpg">
+                            What if I had invested $600
+                            <br>in Bitcoin on 04/06/2014</a>
+                        <br>
                     </div>
                 </div>
-                <div class="row equal padding ">
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                        <div class="panel panel-info ">
-                            <div class="panel-heading col-right">
-                                <h3 class="panel-title">
-                                    Purchase Price
-                                    <i id="purchasePriceTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
-                                </h3>
-                            </div>
-                            <div class="panel-body col-right">
-                                <h3 id="purchasePrice">
-                                    $2<span class="comma ">,</span>561.0
-                                </h3>
-                                <span id="purchasePriceText" class="label label-default">per BTC</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
-                        <div class="panel panel-info ">
-                            <div class="panel-heading col-center">
-                                <h3 class="panel-title ">
-                                    Amount
-                                    <i id="amountTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
-                                </h3>
-                            </div>
-                            <div class="panel-body col-center">
-                                <h3 id="amountText">3.79 BTC</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 col-left">
-                        <div class="panel panel-info ">
-                            <div class="panel-heading">
-                                <h3 class="panel-title ">
-                                    Price Now
-                                    <i id="priceNowTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
-                                </h3>
-                            </div>
-                            <div class="panel-body ">
-                                <h3 id="priceNow">$15<span class="comma">,</span>477.1</h3>
-                                <span id="priceNowText" class="label label-default ">per BTC</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
-                        <div class="panel panel-info ">
-                            <div class="panel-heading col-right">
-                                <h3 class="panel-title">
-                                    Total Value Now
-                                    <i id="totalValueNowTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
-                                </h3>
-                            </div>
-                            <div class="panel-body col-right">
-                                <h3 id="totalValueNow">$58<span class="comma ">,</span>620.1</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
-                        <div class="panel panel-info ">
-                            <div class="panel-heading col-center">
-                                <h3 class="panel-title ">
-                                    Profit
-                                    <i id="profitTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
-                                </h3>
-                            </div>
-                            <div class="panel-body col-center">
-                                <h3 id="profit" class="profit">+$48<span class="comma ">,</span>920.1</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
-                        <div class="panel panel-info ">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Change
-                                    <i id="changeTooltip" class="fa fa-th fa-info-circle" data-toggle="tooltip" data-original-title=""></i>
-                                </h3>
-                            </div>
-                            <div class="panel-body ">
-                                <h3 id="change" class="profit ">+504.3%</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 visible-lg visible-md "></div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 ">
-                        <!-- <div class="panel panel-info ">
-                            <div class="panel-heading ">
-                                <h3 class="panel-title">Annual Return</h3>
-                            </div>
-                            <div class="panel-body ">
-                                <h3 id="annualReturn" class="profit">+4<span class="comma ">,</span>551.9%</h3>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 visible-lg visible-md "></div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-12 text-center">
-                        <h2 class="result ">It's never too late to get involved in
-                            <span class="stand-out" id="notLate">Bitcoin</span>.
-                            <br/>Start your cryptocurrency journey now on</h2>
-                    </div>
-                    <div class="col-md-6 text-center ">
-                        <a href="https://www.binance.com/ " target="_blank ">
-                            <img alt="Binance Exchange " class="exchange" src="images/binance.png"
-                            />
-                        </a>
-                    </div>
-                    <div class="col-md-6 text-center ">
-                        <a href="https://bittrex.com/ " target="_blank ">
-                            <img alt="Bittrex Exchange " class="exchange" src="images/bittrex.jpg"
-                            />
-                        </a>
-                    </div>
-                </div>
+
             </div>
         </div>
 
-        <div class="container-fluid index-top container-answer no-padding">
+        <div class="container-fluid index-top container-answer no-padding" id="frontpageboxes">
             <div class="container">
                 <div class="row padding">
                     <div class="col-md-4 col-sm-6 text-center suggestions">
@@ -503,7 +606,7 @@
                         <br>
                     </div>
                     <div class="col-md-4 col-sm-6 text-center suggestions">
-                        <a href="#" data-amount="7500" data-cryptoName="IOTA IOTA" data-crypto="IOTA" data-displayName="IOTA" data-date="09/22/2017" onclick="checkCoin(this)">
+                        <a href="#" data-amount="7500" data-cryptoName="IOTA MIOTA" data-crypto="IOTA" data-displayName="IOTA" data-date="09/22/2017" onclick="checkCoin(this)">
                             <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/iota-crypto-time-machine.jpg">
                             What if I had invested $7500
                             <br>in IOTA on 09/22/2017</a>
@@ -513,11 +616,11 @@
                         <a href="#" data-amount="2700" data-cryptoName="XMR Monero" data-crypto="XMR" data-displayName="Monero" data-date="10/23/2014" onclick="checkCoin(this)">
                             <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/monero-crypto-time-machine.jpg">
                             What if I had invested $2700
-                            <br>in Monero on 10/23/2014</a>
+                            <br>in Monero on 10/28/2014</a>
                         <br>
                     </div>
                     <div class="col-md-4 col-sm-6 text-center suggestions">
-                        <a href="#" data-amount="9400" data-cryptoName="NEO Neo" data-crypto="NEO" data-displayName="NEO" data-date="01/15/2017" onclick="checkCoin(this)">
+                        <a href="#" data-amount="9400" data-cryptoName="NEO Antshares" data-crypto="NEO" data-displayName="NEO" data-date="01/15/2017" onclick="checkCoin(this)">
                             <img alt="Coin Time Machine on Product Hunt" class="producthunt img-responsive center-block" src="images/neo-crypto-time-machine.jpg">
                             What if I had invested $9400
                             <br>in NEO on 01/15/2017</a>
@@ -583,6 +686,7 @@
                 return amount * result;
             }
             function getFiatAmountFromCryptoAt(fiatToken, crypto, timestamp) {
+                startLoadingButton();
                 const url = 'https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + crypto + '&tsyms=' + fiatToken + '&ts=' + timestamp;
                 var result;
                 $.ajax({
@@ -591,7 +695,7 @@
                     async: false,
                     success: function(response) {
                         if(response.Response === "Error") {
-                            alert(response.Message);
+                            // alert(response);
                             result = 0;
                         } else {
                             result = response[crypto][fiatToken];
@@ -676,9 +780,29 @@
                 calculate();
             }
 
+            function startLoadingButton() {
+                var button = document.getElementById('submit');
+                document.getElementById('buttonText').innerText = 'Loading...';
+                var buttonLoading = document.getElementById('buttonLoading');
+                buttonLoading.style.display = 'inline-block';
+                button.classList.add("disabled");
+            }
+
+            function stopLoadingButton() {
+                var button = document.getElementById('submit');
+                var buttonLoading = document.getElementById('buttonLoading');
+                buttonLoading.style.display = 'none';
+                button.classList.remove("disabled");
+                document.getElementById('buttonText').innerText = 'Tell me what would have been!';
+            }
+
             function calculate() {
 
+                startLoadingButton();
+
                 const i = getInvestedValues();
+
+                // console.log(i)
 
                 if(i.amount > 0) {
                     // console.log("OK");
@@ -694,16 +818,11 @@
                     return;
                 }
 
-                var button = document.getElementById('submit');
-                document.getElementById('buttonText').innerText = 'Loading...';
-                var buttonLoading = document.getElementById('buttonLoading');
-                buttonLoading.style.display = 'inline-block';
-                button.classList.add("disabled");
-
                 // console.log(i.amount, i.crypto, toTimestamp(i.on));
                 var purchasePrice = getFiatAmountFromCryptoAt(i.fiatToken, i.crypto, toTimestamp(i.on));
                 var amount = getCryptoAmountFromFiatAt(i.amount, i.fiatToken, i.crypto, toTimestamp(i.on));
                 var priceNow = getCryptoFiatValue(i.crypto, i.fiatToken);
+                console.log(purchasePrice)
                 var totalValueNow = priceNow * amount;
                 var profit = (priceNow * amount) - i.amount;
                 var change = totalValueNow / i.amount * 100;
@@ -758,11 +877,13 @@
                     // document.getElementById("annualReturn").classList.remove("loss");
                 }
 
-                buttonLoading.style.display = 'none';
-                button.classList.remove("disabled");
-                document.getElementById('buttonText').innerText = 'Tell me what would have been!';
+                stopLoadingButton();
+
                 document.getElementById("resultsSection").style.display = 'inherit';
 
+                if (window.matchMedia('(min-width: 992px)').matches) {
+                    document.getElementById("frontpageboxes").style.display = 'none';
+                }
                 drawChart1(i.crypto);
                 document.getElementById("resultsSection").scrollIntoView()
 
